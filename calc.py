@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import Entry, ttk
+from tkinter import  ttk
 
 
 class Calc(tk.Tk):
@@ -17,9 +17,8 @@ class Calc(tk.Tk):
         # create widget
         self.create_wigets()
 
-    number1 = tk.IntVar()
-    number2 = tk.IntVar()
-    
+        self.value(self.number1,self.number2)
+        
 
     def create_wigets(self):
         # padding for widgets using the grid layout
@@ -45,38 +44,36 @@ class Calc(tk.Tk):
         # ttk.Button(frm, text="Quit", command=root.destroy).grid(column=1, row=0)
         label = ttk.Label(self,  text='first numbe:')
         label.grid(column=0, row=1, sticky=tk.W, **paddings)
-        num1= ttk.Entry(self, textvariable=self.number1)
+        num1= ttk.Entry(self)
         num1.grid(column=1, row=1, sticky=tk.W, **paddings)
-        num1.pack()
         labe2 = ttk.Label(self,  text='secound numbe:')
         labe2.grid(column=0, row=2, sticky=tk.W, **paddings)
-        num2 = ttk.Entry(self, textvariable=self.number2)
+        num2 = ttk.Entry(self)
         num2.grid(column=1, row=2, sticky=tk.W, **paddings)
-        num2.pack()
         result=ttk.Button(self,text="result",command=self.option_changed)
         result.grid(column=0, row=3, sticky=tk.W, **paddings)
 
-        num1.pack()
-        num2.pack()
+        self.number1 = num1.get()
+        self.number2 = num2.get()
 
         # output label
         self.output_label = ttk.Label(self, foreground='red')
         self.output_label.grid(column=0, row=4, sticky=tk.W, **paddings)
 
-    # def value (self,num1,num2):
+    def value (self,num1,num2):
         
-    #     if self.option_var =="+":
-    #         res = num1 + num2
-    #     elif self.option_var =="-":
-    #         res = num1 - num2
-    #     elif self.option_var =="*":
-    #         res = num1 * num2
-    #     elif self.option_var =="/":
-    #         res = num1 / num2
-    #     return res
+        if self.option_var =="+":
+            self.res = num1 + num2
+        elif self.option_var =="-":
+            self.res = num1 - num2
+        elif self.option_var =="*":
+            self.res = num1 * num2
+        elif self.option_var =="/":
+            self.res = num1 / num2
+        
 
     def option_changed(self, *args):
-        self.output_label['text'] = f'You result is: {self.number1}'
+        self.output_label['text'] = f'You result is: {self.value.res}'
 
     
 
