@@ -1,2 +1,8 @@
 heroku hosting website
 pycharm
+
+urls youtube > path(url, index > print hello world, name)
+urls google > urls yotube/+ include youtube urls
+sitting add app > youtube
+
+django
